@@ -16,6 +16,6 @@ test_ESM3_P = torch.load('../dataset/test set/clathrin_ind_esm3.pt')
 test_ESM3_N = torch.load('../dataset/test set/vesicular_ind_esm3.pt')
 test_ESM3_P = torch.tensor(test_ESM3_P).float()
 test_ESM3_N = torch.tensor(test_ESM3_N).float()
-
 test_ESM3 = torch.cat((test_ESM3_P, test_ESM3_N), 0)
 test_y = [1] * 258 + [0] * 227
+
