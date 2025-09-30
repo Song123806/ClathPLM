@@ -51,3 +51,4 @@ def to_test_model(t5_features, bert_features, esm3_features, y):
 
 if __name__ == "__main__":
     outs, _, _ = to_test_model(test_t5, test_Bert, test_ESM3, test_y)
+
