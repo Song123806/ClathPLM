@@ -1,8 +1,23 @@
+import os
+import random
+import numpy as np
+import pandas as pd
 import torch
+import torch.nn as nn
+import torch.optim as optim
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, matthews_corrcoef, roc_auc_score, \
+    roc_curve, precision_recall_curve
+from sklearn.model_selection import StratifiedKFold
 from torch.utils.data import TensorDataset, DataLoader
-from utils import evaluate_model_performance, roc
-from model import CNN
-from getdata import test_x,test_y
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils import roc, print_eva, fold_roc, evaluate_model_performance, EarlyStopping
+import math
+from torch.optim.lr_scheduler import StepLR
+import torch.nn.functional as F
+from getdata import test_t5, test_Bert, test_ESM3, test_y
+from model import TripleFeatureModel
+
 def to_test_model(t5_features, bert_features, esm3_features, y):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = TripleFeatureModel().to(device)
