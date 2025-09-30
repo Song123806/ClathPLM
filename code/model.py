@@ -1,5 +1,7 @@
 import torch
 import torch.nn as nn
+import math
+import torch.nn.functional as F
 
 class selfAttention(nn.Module):
     def __init__(self, num_attention_heads, input_size, hidden_size):
